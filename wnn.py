@@ -1,4 +1,6 @@
 import os
+import re
+import emoji
 
 path = r"C:\Users\mrwan\Desktop\final_data"  # 文件夹目录
 # path = r"C:\Users\mrwan\Desktop\test_data"  # 测试用
@@ -56,7 +58,11 @@ for file in files:  # 遍历文件夹
                 data = data.replace(subData, ' eeeee ')
                 head = data.find(r"<span ")
 
-            # 结束啦
+            # 处理emoji
+            data = emoji.demojize(data)
+            data = re.sub(r':([a-z_a-z]*):', ' eeeee ', data)
+
+            # 结束啦~
             dataFinal = dataFinal + data
 
     # 写回文件
