@@ -40,8 +40,8 @@ for file in files:  # 遍历文件夹
                     data = data.replace(subData, ' ttttt ')
                     head = data.find(r"<a ")
                     continue
-                if subData.find('#') != -1:  # 处理hashtags
-                    tepData = subData[subData.find('#') + 1:]
+                if subData.find('>#') != -1:  # 处理hashtags
+                    tepData = subData[subData.find('>#') + 2:]
                     subText = tepData[0: tepData.find('#')]
                     data = data.replace(subData, ' ' + subText + ' ggggg ')
                     head = data.find(r"<a ")
@@ -60,7 +60,7 @@ for file in files:  # 遍历文件夹
 
             # 处理emoji
             data = emoji.demojize(data)
-            data = re.sub(r':([a-z_a-z]*):', ' eeeee ', data)
+            data = re.sub(r':(.*_.*):', ' eeeee ', data)
 
             # 结束啦~
             dataFinal = dataFinal + data
